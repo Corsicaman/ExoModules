@@ -9,6 +9,7 @@ export class AnimLettre {
     /**
      * Classe permettant d'animer les lettres'
          String / Parent / Fonction à appeler
+         Ça marche!
      }}
      */
 
