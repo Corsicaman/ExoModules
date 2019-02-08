@@ -1,7 +1,7 @@
 
 import {contenuIntro} from './contenuIntro.js' // le contenu de l'intoduction */
 import {Introduction} from './Introduction.js' // 
-// import {AnimLettre} from './AnimLettre.js' //
+import {AnimLettre} from './AnimLettre.js' //
 
 
 /* l'élement de la page qui contiendra les éléments créés dynamiquement */
