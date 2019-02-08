@@ -8,7 +8,7 @@ export class AnimLettre {
 
     /**
      * Classe permettant d'animer les lettres'
-         
+         String / Parent / Fonction à appeler
      }}
      */
 
@@ -35,7 +35,7 @@ export class AnimLettre {
            let elmConteneur = this.creerElement(this.elmParent,
                 'div',
                 '',
-                'mot.')
+                'mot')
         for (let i = 0; i < phraseLen; i++) {
             let elmLettre = this.creerElement(elmConteneur,
                 'div',
