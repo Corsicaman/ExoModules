@@ -1,0 +1,54 @@
+/*!
+Theme Name: Exercice #4
+Author: Eddy Martin
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: veille-2019
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> Table des modules:
+----------------------------------------------------------------
+# Variable
+# mixins-master
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+    ## Menus
+---------------------------------------------------------------    
+# Variable
+# mixins-master    
+--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "normalize";
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+
+/*--------------------------------------------------------------
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";  
+
+/*--------------------------------------------------------------
+# layout
+--------------------------------------------------------------*/
+@import "layout/layout"; 
+@import "animation/animation"; 

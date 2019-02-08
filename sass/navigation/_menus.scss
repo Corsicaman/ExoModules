@@ -1,0 +1,11 @@
+.menu a {
+	text-decoration: none;
+	color: white;
+	border-bottom: 1px solid white;
+	font-size: 1rem;
+	padding: 0.5rem;
+}
+
+.menu a:first-child {
+	border-top: 1px solid white;
+}

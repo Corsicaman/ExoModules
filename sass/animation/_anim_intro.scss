@@ -1,0 +1,109 @@
+.introduction {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+.rectangle {
+    // font-size: 1em;
+  
+    min-height: 2em;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Propriété comme itemFlex*/
+    /* boîtes non flexibles du 1/3 de la largeur de son parent */
+    flex: 1 0 50%;
+}
+
+/* À COMPLÉTER - Caractéristiques de chaque rectangle de l'intro...
+   ========================================================================== */
+.rectangle:first-of-type,
+.rectangle:last-of-type {
+    /* Le 1er et le dernier rectangle sont centrés sur une seule ligne...*/
+    width: 100%;
+    flex: 1 0 100%;
+}
+
+.rectangle:nth-child(1) {
+    background-color: #e54792;
+    animation: anim1 0.5s;
+}
+
+.rectangle:nth-child(2) {
+    background-color: #f59723;
+    animation: anim2 0.5s 0.5s backwards;
+}
+
+.rectangle:nth-child(3) {
+    background-color: #58b34c;
+    animation: anim3 0.5s 1s backwards;
+}
+
+.rectangle:nth-child(4) {
+    background-color: #006d98;
+    font-size: 1em;
+    /* max-height : 20vh;*/
+
+    animation: animGo 1s 1.5s backwards;
+}
+
+.deplacementContenuIntro {
+    animation: deplacementContenuIntro 1s backwards;
+}
+
+@keyframes anim1 {
+    from {
+        transform: translateY(-50vh) rotate(-45deg);
+
+    }
+
+    to {
+        transform: translateY(0%) rotate(0);
+    }
+}
+
+@keyframes anim2 {
+    from {
+        transform: translateX(-200%) rotate(-45deg);
+    }
+
+    to {
+        transform: translateX(0%) rotate(0);
+    }
+}
+
+@keyframes anim3 {
+    from {
+        transform: translateX(200%) rotate(-45deg);
+    }
+
+    to {
+        transform: translateX(0%) rotate(0);
+    }
+}
+
+@keyframes animGo {
+    from {
+        transform: translateY(200vh) rotate(-45deg);
+    }
+
+    50%,
+    to {
+        transform: translateY(0%) rotate(0);
+    }
+}
+
+@keyframes deplacementContenuIntro { 
+    from {
+        transform: translateX(0vw);
+     
+    }
+
+    to {
+        transform: translateX(-100vw);
+       
+    }
+}

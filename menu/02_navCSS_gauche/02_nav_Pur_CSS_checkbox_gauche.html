@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>02-Navigation Pur CSS par la gauche</title>
+
+	<!-- Ajustement de la taille du viewport-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<style type="text/css">
+			/*Reset*/
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		html {
+			font-size: 0.875em;
+		}
+		
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			max-width: 100vw;
+			min-height: 100vh;
+			/*Conteneur flex en colonne*/
+			display: flex;
+			flex-direction: column;
+		}
+		
+		.global {
+			max-width: 100vw;
+			/*Propriété comme item flex*/
+			flex: 1 0 100%;
+			/*Conteneur flex en rangée*/
+			display: flex;
+			/*Poussée vers la gauche pour ne pas voir le menu*/
+			transform: translateX(-100%);
+			/*Effet de transition sur la transformation*/
+			transition: transform 1s;
+		/*	overflow-x: hidden; */
+		}
+		
+		.contenu {
+			/*Sa largeur est fixée à 100%*/
+			width: 100vw;
+			/*Propriété comme item flex - ne peut rétrécir*/
+			flex: 1 0 100%;
+			/*Conteneur flex en colonne pour ses enfants*/
+			display: flex;
+			flex-flow: column nowrap;
+			overflow-x: hidden; overflow-y: auto;
+		}
+		
+		section {
+			background-color: #ffc9b7;
+			padding: 0 0.5rem;
+			/*Propriété comme item flex - peut s'étirer en hauteur*/
+			flex: 1 0 100%;
+		}
+		
+		footer {
+			text-align: center;
+			padding: 1%;
+			background-color: #E84545;
+		}
+		
+		li {
+			margin: 0.5rem 2rem;
+		}
+		
+		.boutonBurger {
+			background: linear-gradient(to bottom, #E84545 0%, #E84545 20%, transparent 20%, transparent 40%, #E84545 40%, #E84545 60%, transparent 60%, transparent 80%, #E84545 80%, #E84545 100%);
+			height: 48px;
+			width: 48px;
+			margin: 1%;
+			display: inline-block;
+			cursor: pointer;
+			/*Effet de transition sur la rotation*/
+			transition: transform 1s;
+		}
+		
+		.menu {
+			background-color: #E84545;
+			text-align: center;
+			/*Pour cet exemple, on fixe la largeur du menu à 100% ou 100vw*/
+			width: 100vw;
+			/*Propriété comme item flex - ne peut rétrécir*/
+			flex: 1 0 100%;
+			/*Contexte flex en colonne pour ses enfants*/
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow-x: hidden; overflow-y: auto;
+		}
+		
+		.menu a {
+			text-decoration: none;
+			color: white;
+			border-bottom: 1px solid white;
+			font-size: 1.5rem;
+			padding: 0.5rem;
+		}
+		
+		.menu a:first-child {
+			border-top: 1px solid white;
+		}
+		
+		
+		/* le menu... apparaît ou disparaît selon l'état checked de la case à cocher #chkBoutonBurger
+			on fait aussi tourner le bouton burger...
+		
+			Et... pour l'aspect esthétique de la chose... la case à cocher (checkbox) n'est pas affichée...
+		*/
+		
+		#chkBoutonBurger:checked~.global {
+			transform: translateX(0%);
+		}
+		
+		#chkBoutonBurger:checked~.boutonBurger {
+			transform: rotate(90deg);
+		}
+		
+		#chkBoutonBurger {
+			display: none;
+		}
+		/*Pour les tailles plus grandes le menu apparaît de hauteur normale et le bouton burger disparaît*/
+		
+		@media screen and (min-width: 768px) {
+			html {
+				font-size: 1em;
+			}
+			
+			.boutonBurger {
+				display: none
+			}
+					
+			.global {
+				/*Placer à sa potition d'origine*/
+				transform: translateX(0%);
+				/*Mettre le contenu en colonne*/				
+				flex-direction: column;
+			}
+
+			.menu {
+				/*Propriété comme item flex - ne peut s'étirer en hauteur*/
+				flex: 0 0 100%;
+				
+				/*Affichage du menu en rangée*/
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.menu a {
+				border: none;
+				border-left: 1px solid white;
+				/*Propriété comme item flex - peut s'étirer en largeur*/
+				flex: 1 0 auto;
+			}
+			.menu a:first-child {
+				border-top: none;
+			}
+	</style>
+
+
+</head>
+
+<body>
+
+	<input type="checkbox" id="chkBoutonBurger" />
+	<label for="chkBoutonBurger" class="boutonBurger"></label>
+
+	<div class="global">
+		<nav class="menu">
+			<a href="#">BOUTON 1</a>
+			<a href="#">BOUTON 2</a>
+			<a href="#">BOUTON 3</a>
+			<a href="#">BOUTON 4</a>
+		</nav>
+		<!-- /MENU -->
+
+		<main class="contenu">
+			<section>
+				<article>
+					<h2>Navigation basée sur :</h2>
+
+					<ul>
+						<li>Flexbox pour la disposition</li>
+						<li>CSS pour les styles et les transitions</li>
+					</ul>
+
+					<h2>Le principe général est celui-ci :</h2>
+
+					<ul>
+
+						<li>
+							Le &lt;body&gt; est affiché en colonne et comporte deux enfants principaux: le <strong>bouton burger</strong> (balises &lt;input&gt; et &lt;label&gt;) et le <strong>contenu global</strong> (balise &lt;div class="global"&gt;).
+						</li>
+
+						<li>
+							La balise &lt;div class="global"&gt; est le flex-container principal et ses deux enfants directs sont les deux parties principales du gabarit, à savoir le <strong>menu</strong> (balise &lt;nav&gt;) et le <strong>contenu</strong> (balise &lt;main&gt;).
+						</li>
+
+						<li>
+							Sur petit écran (767px et moins), le contenu de &lt;div class="global"&gt; est affiché en rangée. La barre de menu et le contenu ont une largeur de 100%. La barre de menu est déplacée à gauche avec une translation de -100% sur le conteneur parent: &lt;div class="global"&gt;. Quand on clique sur le bouton "burger" on place le conteneur parent à son emplacement initial (translateX(0%)).
+						</li>
+
+						<li>
+							Sur un écran de taille moyenne (min-width: 768px), le contenu de la balise &lt;div class="global"&gt; est affichée en colonne et la barre de menu est alors automatiquement placée en haut de "main".
+						</li>
+
+
+						<li>PRÉ-REQUIS CSS/HTML : case à cocher invisible </li>
+					</ul>
+
+				</article>
+
+			</section>
+			<footer>Navigation Responsive avec CSS - Sur les petits écrans le menu arrive par la gauche...</footer>
+		</main>
+		<!-- /CONTENU -->
+
+	</div>
+	<!-- /GLOBAL -->
+
+	<script>
+		/*
+		Contrôler l'aspect de la case à cocher au clic sur les boutons
+		*/
+		
+		(function() { //IIFE
+			var leCheckBox = document.querySelector("input");
+			var lesBoutons = document.querySelectorAll(".menu a");
+			var nbBoutons = lesBoutons.length;		
+			console.log(nbBoutons);
+			
+			for (var i = 0; i < nbBoutons; i++) {
+				lesBoutons[i].addEventListener("click", function() {
+					console.log(leCheckBox.checked);
+					leCheckBox.checked = false;
+				}, false);
+			}
+		})(); //Fin IIFE
+	</script>
+
+</body>
+
+
+
+</html>
